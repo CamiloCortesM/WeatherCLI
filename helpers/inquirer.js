@@ -8,31 +8,15 @@ const questions = [
     message: "what do you want to do?",
     choices: [
       {
-        value: "1",
-        name: `${"1.".green}Create todo`,
+        value: 1,
+        name: `${"1.".green}search city`,
       },
       {
-        value: "2",
-        name: `${"2.".green}List todos`,
+        value: 2,
+        name: `${"2.".green} History`,
       },
       {
-        value: "3",
-        name: `${"3.".green}List completed todos`,
-      },
-      {
-        value: "4",
-        name: `${"4.".green}List pending todos`,
-      },
-      {
-        value: "5",
-        name: `${"5.".green}Complete todo(s)`,
-      },
-      {
-        value: "6",
-        name: `${"6.".green}Delete todo`,
-      },
-      {
-        value: "0",
+        value: 0,
         name: `${"0.".green}Exit \n`,
       },
     ],
