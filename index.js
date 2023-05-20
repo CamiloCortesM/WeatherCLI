@@ -25,7 +25,7 @@ const main = async () => {
         if (id === "0") continue;
 
         const placeSelected = places.find((place) => place.id === id);
-      
+
         searches.addHistory(placeSelected.name);
         //weather
         const weather = await searches.weatherPlace(

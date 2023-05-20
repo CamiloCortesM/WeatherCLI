@@ -6,7 +6,7 @@ class Searches {
   dbPath = "./db/database.json";
 
   constructor() {
-    //TODO: read DB
+    this.readDB();
   }
 
   get paramsMapbox() {
@@ -66,7 +66,9 @@ class Searches {
 
   addHistory(place = "") {
     if (this.history.includes(place)) return;
+    this.history = this.history.splice(0, 5);
     this.history.unshift(place);
+    this.saveDB();
   }
 
   saveDB() {
@@ -77,7 +79,10 @@ class Searches {
   }
 
   readDB() {
-    fs.readFileSync(this.dbPath);
+    if (!fs.existsSync(this.dbPath)) return;
+    const data = fs.readFileSync(this.dbPath, { encoding: "utf-8" });
+    const { history } = JSON.parse(data);
+    this.history = history;
   }
 }
 
