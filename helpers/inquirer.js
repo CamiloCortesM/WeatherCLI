@@ -9,11 +9,11 @@ const questions = [
     choices: [
       {
         value: 1,
-        name: `${"1.".green}search city`,
+        name: `${"1.".green}Search city`,
       },
       {
         value: 2,
-        name: `${"2.".green} History`,
+        name: `${"2.".green}History`,
       },
       {
         value: 0,
