@@ -1,7 +1,9 @@
+const fs = require("fs");
 const axios = require("axios");
 
 class Searches {
-  history = ["Tegucigalpa", "Madrid", "San Jose"];
+  history = [];
+  dbPath = "./db/database.json";
 
   constructor() {
     //TODO: read DB
@@ -24,8 +26,6 @@ class Searches {
   }
 
   async city(place = "") {
-    //http
-    // console.log("city", place);
     try {
       const instance = axios.create({
         baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${place}.json?`,
@@ -62,6 +62,22 @@ class Searches {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  addHistory(place = "") {
+    if (this.history.includes(place)) return;
+    this.history.unshift(place);
+  }
+
+  saveDB() {
+    const payload = {
+      history: this.history,
+    };
+    fs.writeFileSync(this.dbPath, JSON.stringify(payload));
+  }
+
+  readDB() {
+    fs.readFileSync(this.dbPath);
   }
 }
 
